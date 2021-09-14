@@ -1,14 +1,13 @@
-import pg from "pg";
+import Sequelize from "sequelize";
+import { config } from "dotenv";
 
-async function connect() {
-  if (global.connection) {
-    return global.connection.connect();
-  }
-  const pool = new pg.Pool({
-    connectionString: process.env.PG_URL,
-  });
-  global.connection = pool;
-  return pool.connect();
-}
+config();
 
-export { connect };
+const sequelize = new Sequelize(`${process.env.PG_URL}`, {
+  dialect: "postgres",
+  define: {
+    timestamps: false,
+  },
+});
+
+export default sequelize;

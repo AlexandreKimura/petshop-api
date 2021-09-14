@@ -19,7 +19,8 @@ async function updateOwner(owner) {
 
 async function deleteOwner(id) {
   const animal = await AnimalRepository.getAnimalByOwner(id);
-  if (animal) {
+  console.log(animal);
+  if (animal.length > 0) {
     throw new Error("Há animais com esse proprietário!");
   }
   await OwnerRepository.deleteOwner(id);

@@ -4,8 +4,8 @@ async function createAnimal(req, res, next) {
   try {
     let animal = req.body;
 
-    if (!animal.name || !animal.type || !animal.owner_id) {
-      throw new Error("Name, Type e Owner_id são obrigatórios!");
+    if (!animal.name || !animal.type || !animal.ownerId) {
+      throw new Error("Name, Type e Owner Id são obrigatórios!");
     }
 
     animal = await AnimalService.createAnimal(animal);
@@ -36,8 +36,8 @@ async function updateAnimal(req, res, next) {
   try {
     let animal = req.body;
 
-    if (!animal.id || !animal.name || !animal.type || !animal.owner_id) {
-      throw new Error("Animal ID, Name, Type e Owner_id são obrigatórios!");
+    if (!animal.id || !animal.name || !animal.type || !animal.ownerId) {
+      throw new Error("Animal ID, Name, Type e Owner Id são obrigatórios!");
     }
 
     animal = await AnimalService.updateAnimal(animal);
